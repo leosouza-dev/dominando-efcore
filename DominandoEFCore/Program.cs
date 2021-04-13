@@ -33,6 +33,9 @@ namespace DominandoEFCore
             // modo mais seguro
             var descricao = "TESTE";
             db.Database.ExecuteSqlRaw("update departamentos set descricao={0} where id=1", descricao);
+
+            // terceira opção
+            db.Database.ExecuteSqlInterpolated($"update departamentos set descricao={descricao} where id=1");
         }
 
         static int _count;
