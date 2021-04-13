@@ -58,3 +58,9 @@
 - Vamos criar o método SqlInjection() para criar um ambiente de teste desse assunto;
 - Vamos testar como atualizar um dado de forma segura e na sequência uma forma insegura;
 - SImulando SqlINjection - foi interpolado no ExecuteRaw o valor "fornecido" - NÃO FAZER ISSO!!!;
+
+### Detectando migrações Pendentes
+
+- Vamos conhecer um método de extensão do DataBase que verifica em tempo de execução migrações pendentes;
+- O métode é: GePendingMigration();
+- E para testar esse Extension Method vamos criar nosso método para teste: - MigracoesPendentes;
