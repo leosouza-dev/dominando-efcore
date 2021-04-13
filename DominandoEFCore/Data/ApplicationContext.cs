@@ -12,7 +12,7 @@ namespace DominandoEFCore.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            const string strConnection = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=dominando-efcore;Integrated Security=True;Polling=true";
+            const string strConnection = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=dominando-efcore;Integrated Security=True;Pooling=true";
             optionsBuilder
                 .UseSqlServer(strConnection) // usando sqlServer
                 .EnableSensitiveDataLogging() // habilita dados sensiveis - valores de parâmetros

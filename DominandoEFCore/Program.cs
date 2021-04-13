@@ -6,7 +6,13 @@ namespace DominandoEFCore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            EnsureCreatedAndDeleted();
+        }
+
+        static void EnsureCreatedAndDeleted()
+        {
+            using var db = new DominandoEFCore.Data.ApplicationContext();
+            db.Database.EnsureCreated();
         }
     }
 }
