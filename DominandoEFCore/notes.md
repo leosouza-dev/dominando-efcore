@@ -64,3 +64,8 @@
 - Vamos conhecer um método de extensão do DataBase que verifica em tempo de execução migrações pendentes;
 - O métode é: GePendingMigration();
 - E para testar esse Extension Method vamos criar nosso método para teste: - MigracoesPendentes;
+- Add o pacote Microsoft.EntityFrameworkCore.Design para trabalhar com migrações;
+- Add o pacote Tool do EfCore - **dotnet tool install --global dotnet-ef --version 5.0.0**;
+- E agora podemos criar uma migração - **dotnet ef migrations add initial --context ApplicationContext**;
+- Com isso é gerado a pasta de Migração com os arquivos de migração;
+- Se rodarmos a aplicação, vamos receber as informações de migrações pendentes que detectadas na aplicação - initial;
