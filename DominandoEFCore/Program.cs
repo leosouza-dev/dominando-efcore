@@ -13,10 +13,13 @@ namespace DominandoEFCore
             // EnsureCreatedAndDeleted();
             // GapDoEnsureCreated();
             //HealthCheckBancoDeDados();
+            _count=0; // resetando
             GerenciarEstadoDaConexao(false);
+            _count=0; // resetando
             GerenciarEstadoDaConexao(true);
         }
 
+        static int _count;
         static void GerenciarEstadoDaConexao(bool gerenciarEstadoConexao)
         {
             using var db = new DominandoEFCore.Data.ApplicationContext();
@@ -24,6 +27,9 @@ namespace DominandoEFCore
 
             //recuperando a SQLConnection
             var conexao = db.Database.GetDbConnection();
+
+            //incrementar contador de conexão sempre que a conexão for alterada
+            conexao.StateChange += (_, __) => ++ _count;
             
             if(gerenciarEstadoConexao)
             {
@@ -38,7 +44,7 @@ namespace DominandoEFCore
 
             // para a contagem de tempo após as 200 consultas
             time.Stop();
-            var mensagem = $"Tempo: {time.Elapsed.ToString()}, {gerenciarEstadoConexao}";
+            var mensagem = $"Tempo: {time.Elapsed.ToString()}, {gerenciarEstadoConexao}, {_count}";
 
             Console.WriteLine(mensagem);
         }

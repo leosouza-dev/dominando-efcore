@@ -37,3 +37,4 @@
 - Quando recebermos "true" no parâmetro, vamos abrir manualmente a conexão com o BD;
 - GerenciarEstadoDaConexao(false) - **Tempo: 00:00:01.3884937, False**
 - GerenciarEstadoDaConexao(true) - **Tempo: 00:00:00.0731434, True**;
+- outran coisa que podemos testar é verificar quantas conexões são abertas no processo - criando uma varável estática.
