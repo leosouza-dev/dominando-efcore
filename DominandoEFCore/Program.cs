@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -22,6 +23,10 @@ namespace DominandoEFCore
             {
                 var connection = db.Database.GetDbConnection();
                 connection.Open();
+
+                // outra possibilidade
+                // verifica se existe uma tabela...
+                db.Departamentos.Any();
 
                 Console.WriteLine("Posso me conectar!");
             }
