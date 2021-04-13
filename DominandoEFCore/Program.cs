@@ -39,8 +39,12 @@ namespace DominandoEFCore
             db.SaveChanges();
 
             // atualizando um registro - de forma segura
-            var descricao = "Departamento 1";
-            db.Database.ExecuteSqlRaw("update departamentos set descricao='DepartamentoAlterado' where descricao={0}", descricao);
+            // var descricao = "Departamento 1";
+            // db.Database.ExecuteSqlRaw("update departamentos set descricao='DepartamentoAlterado' where descricao={0}", descricao);
+
+            // atualizando um registro - de forma insegura
+            var descricao2 = "Teste ' or 1='1";
+            db.Database.ExecuteSqlRaw($"update departamentos set descricao='AtaqueSqlInjection' where descricao='{descricao2}'");
 
             foreach (var departamento in db.Departamentos.AsNoTracking())
             {
