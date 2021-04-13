@@ -4,3 +4,4 @@
 
 - Alternativa às migrações, usados normalmente em ambiente de DEV.
 - Ensure Created - cria o BD e tabelas (se não existir).
+- Ensure Deleted - exclui um BD.
