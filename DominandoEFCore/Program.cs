@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 
@@ -10,6 +11,24 @@ namespace DominandoEFCore
         {
             // EnsureCreatedAndDeleted();
             GapDoEnsureCreated();
+        }
+
+        static void HealthCheckBancoDeDados()
+        {
+            using var db = new DominandoEFCore.Data.ApplicationContext();
+
+            // forma mais comum para tentar abrir uma conexão
+            try
+            {
+                var connection = db.Database.GetDbConnection();
+                connection.Open();
+
+                Console.WriteLine("Posso me conectar!");
+            }
+            catch (Exception)
+            {               
+                Console.WriteLine("Não Posso me conectar!");
+            }
         }
 
         static void EnsureCreatedAndDeleted()

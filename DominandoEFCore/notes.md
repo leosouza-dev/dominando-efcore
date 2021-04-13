@@ -16,3 +16,8 @@
 - Ao rodar a aplicação, só é criado as tabelas do primeiro contexto - esse é o GAP;
 - Não é possível rodar o EnsureCreated para contextos diferentes que usam o mesmo BD;
 - Resolvendo - Criamos o databaseCreator e usamos o método CreateTables();
+
+### HealthCheck do banco de dados
+
+- Validando a conexão;
+- Vamos criar o método na classe Program - HealthCheckBancoDeDados();
