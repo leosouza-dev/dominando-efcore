@@ -44,5 +44,7 @@
 ### Conhecendo os comandos ExecuteSql
 
 - Vamos criar um método ExecuteSQL() para conhecermos melhor e testar;
-- um dos métodos mais comuns é  o CreateCommand() em conjunto com cmd.CommandText  e cmd.ExecuteNonQuery(), porém não é o mais seguro;
-- uma forma mais segura é usando o ExecuteSqlRaw();
+- Um dos métodos mais comuns é  o CreateCommand() em conjunto com cmd.CommandText  e cmd.ExecuteNonQuery(), porém não é o mais seguro;
+- Uma forma mais segura é usando o ExecuteSqlRaw();
+- Com essa segunda opção podemos trabalhar com DbParameters - evitando possíveis ataques;
+
