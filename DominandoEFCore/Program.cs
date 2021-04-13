@@ -18,20 +18,16 @@ namespace DominandoEFCore
         {
             using var db = new DominandoEFCore.Data.ApplicationContext();
 
-            // forma mais comum para tentar abrir uma conexão
-            try
+            // método que valida a conexão com o BD
+            var canConnect = db.Database.CanConnect();
+
+            // não precisa mais do try/catch
+            if (canConnect)
             {
-                var connection = db.Database.GetDbConnection();
-                connection.Open();
-
-                // outra possibilidade
-                // verifica se existe uma tabela...
-                db.Departamentos.Any();
-
                 Console.WriteLine("Posso me conectar!");
             }
-            catch (Exception)
-            {               
+            else
+            {
                 Console.WriteLine("Não Posso me conectar!");
             }
         }

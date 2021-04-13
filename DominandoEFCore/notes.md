@@ -21,3 +21,5 @@
 
 - Validando a conexão;
 - Vamos criar o método na classe Program - HealthCheckBancoDeDados();
+- Foi mostrado duas formas bem comum até então - connection.Open() ou usando o DbSet;
+- Agora temos um método novo para isso - CanConnect();
