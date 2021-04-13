@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace DominandoEFCore
 {
@@ -24,6 +26,10 @@ namespace DominandoEFCore
 
             db1.Database.EnsureCreated();
             db2.Database.EnsureCreated();
+
+            // resolvendo o GAP do EnsureCreated
+            var databaseCreator = db2.GetService<IRelationalDatabaseCreator>();
+            databaseCreator.CreateTables(); // forçando a criação
         }
     }
 }

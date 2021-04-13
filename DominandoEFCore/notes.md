@@ -15,3 +15,4 @@
 - Nesse método estamos tentando usar o EnsureCreated para cada contexto;
 - Ao rodar a aplicação, só é criado as tabelas do primeiro contexto - esse é o GAP;
 - Não é possível rodar o EnsureCreated para contextos diferentes que usam o mesmo BD;
+- Resolvendo - Criamos o databaseCreator e usamos o método CreateTables();
