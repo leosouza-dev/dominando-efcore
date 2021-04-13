@@ -12,7 +12,26 @@ namespace DominandoEFCore
         {
             // EnsureCreatedAndDeleted();
             // GapDoEnsureCreated();
-            HealthCheckBancoDeDados();
+            //HealthCheckBancoDeDados();
+            GerenciarEstadoDaConexao();
+        }
+
+        static void GerenciarEstadoDaConexao()
+        {
+            using var db = new DominandoEFCore.Data.ApplicationContext();
+            var time  = System.Diagnostics.Stopwatch.StartNew(); // iniciando a contagem
+
+            // realizando 200 consultas
+            for (int i = 0; i < 200; i++)
+            {
+                db.Departamentos.AsNoTracking().Any();
+            }
+
+            // para a contagem de tempo após as 200 consultas
+            time.Stop();
+            var mensagem = $"Tempo: {time.Elapsed.ToString()}";
+
+            Console.WriteLine(mensagem);
         }
 
         static void HealthCheckBancoDeDados()

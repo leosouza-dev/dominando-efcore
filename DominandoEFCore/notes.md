@@ -23,3 +23,12 @@
 - Vamos criar o método na classe Program - HealthCheckBancoDeDados();
 - Foi mostrado duas formas bem comum até então - connection.Open() ou usando o DbSet;
 - Agora temos um método novo para isso - CanConnect();
+
+### Gerenciando o estado da Conexão
+
+- Por padrão o EFCore abre e fecha a conexão com o BD sempre que é utilizado;
+- Isso é uma boa prática, porém existem casos que é necessário, durante um processo realizar a ida a base de dados várias vezes dentro de um método, por exemplo;
+- Vamos entender quando deixamos o EFCore cuidar do estado da sua conexão ou quando devemos nos preocupar em cuidar disso;
+- Vamos criar um método - GerenciarEstadoDaConexao() que será nosso exemplo para testes;
+- Esse método irá realizar 200 consultas no banco de dados e vamos contar quanto tempo dura esse processo. Vamos testar das duas formas;
+
