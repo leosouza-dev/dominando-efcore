@@ -18,7 +18,16 @@ namespace DominandoEFCore
             // _count=0; // resetando
             // GerenciarEstadoDaConexao(true);
             // SqlInjection();
-            MigracoesPendentes();
+            //MigracoesPendentes();
+            AplicarMigracaoEmTempoDeExecucao();
+        }
+
+        static void AplicarMigracaoEmTempoDeExecucao()
+        {
+            using var db = new DominandoEFCore.Data.ApplicationContext();
+
+            // detecta todas migrações pendentes da aplicação e executa-las
+            db.Database.Migrate();
         }
 
         static void MigracoesPendentes()

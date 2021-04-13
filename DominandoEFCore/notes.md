@@ -69,3 +69,10 @@
 - E agora podemos criar uma migração - **dotnet ef migrations add initial --context ApplicationContext**;
 - Com isso é gerado a pasta de Migração com os arquivos de migração;
 - Se rodarmos a aplicação, vamos receber as informações de migrações pendentes que detectadas na aplicação - initial;
+
+### Forçando uma migração
+
+- Aplicando migrações em tempo de execução - Não é uma boa pratica;
+- Vamos criar nosso método de teste - **AplicarMigracaoEmTempoDeExecucao()**;
+- Antes de rodar a aplicação vamos apagar o banco pelo próprio terminal - **dotnet ef database drop --context ApplicationContext**;
+- Agora podemos testar - vai executar a migração criando o banco e as tabelas pela migração;
