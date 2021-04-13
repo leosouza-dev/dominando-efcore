@@ -31,4 +31,9 @@
 - Vamos entender quando deixamos o EFCore cuidar do estado da sua conexão ou quando devemos nos preocupar em cuidar disso;
 - Vamos criar um método - GerenciarEstadoDaConexao() que será nosso exemplo para testes;
 - Esse método irá realizar 200 consultas no banco de dados e vamos contar quanto tempo dura esse processo. Vamos testar das duas formas;
-
+- Rodas a aplicação com o EF cuidando da sua conexão - **tempo: 00:00:01.9636781**;
+- Porém instrutor falou que código ainda não é o suficiente para demonstrar o que eles quer;
+- Vamos criar um parâmetro no método GerenciarEstadoDaConexao() que quando for recebido algo, ele irá gerenciar;
+- Quando recebermos "true" no parâmetro, vamos abrir manualmente a conexão com o BD;
+- GerenciarEstadoDaConexao(false) - **Tempo: 00:00:01.3884937, False**
+- GerenciarEstadoDaConexao(true) - **Tempo: 00:00:00.0731434, True**;
