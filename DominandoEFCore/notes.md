@@ -13,3 +13,5 @@
 - Para exemplificar foi criado uma classe Cidade e um contexto novo para essa classe, porém usando a mesma string de conexão;
 - Na classe Program foi criado um método novo - GapDoEnsureCreated();
 - Nesse método estamos tentando usar o EnsureCreated para cada contexto;
+- Ao rodar a aplicação, só é criado as tabelas do primeiro contexto - esse é o GAP;
+- Não é possível rodar o EnsureCreated para contextos diferentes que usam o mesmo BD;
