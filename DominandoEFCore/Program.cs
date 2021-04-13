@@ -12,11 +12,26 @@ namespace DominandoEFCore
         {
             // EnsureCreatedAndDeleted();
             // GapDoEnsureCreated();
-            //HealthCheckBancoDeDados();
-            _count=0; // resetando
-            GerenciarEstadoDaConexao(false);
-            _count=0; // resetando
-            GerenciarEstadoDaConexao(true);
+            // HealthCheckBancoDeDados();
+            // _count=0; // resetando
+            // GerenciarEstadoDaConexao(false);
+            // _count=0; // resetando
+            // GerenciarEstadoDaConexao(true);
+        }
+
+        static void ExecuteSQL()
+        {
+            using var db = new DominandoEFCore.Data.ApplicationContext();
+
+            // primeira opção - criando comando - não tão seguro
+            using (var cmd = db.Database.GetDbConnection().CreateCommand())
+            {
+                cmd.CommandText = "SELECT 1";
+                cmd.ExecuteNonQuery();
+            }
+
+            // modo mais seguro
+            db.Database.ExecuteSqlRaw("update departamentos set descricao='TESTE' where id=1");
         }
 
         static int _count;

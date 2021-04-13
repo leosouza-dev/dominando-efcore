@@ -38,3 +38,11 @@
 - GerenciarEstadoDaConexao(false) - **Tempo: 00:00:01.3884937, False**
 - GerenciarEstadoDaConexao(true) - **Tempo: 00:00:00.0731434, True**;
 - outran coisa que podemos testar é verificar quantas conexões são abertas no processo - criando uma varável estática.
+- Até aqui tudo bem, conseguimos melhorar a performance da nossa aplicação, porém qual o problema acontecerá se o BD não estiver com o Polling habilitado?
+- Se o Polling estar ativado, o tempo de processamento, quando o EFCore gerencia a conexão (abrind 200x), sobe em mais de 2 segundos, enquanto quando nós estamos gerenciando continua igual.
+
+### Conhecendo os comandos ExecuteSql
+
+- Vamos criar um método ExecuteSQL() para conhecermos melhor e testar;
+- um dos métodos mais comuns é  o CreateCommand() em conjunto com cmd.CommandText  e cmd.ExecuteNonQuery(), porém não é o mais seguro;
+- uma forma mais segura é usando o ExecuteSqlRaw();
