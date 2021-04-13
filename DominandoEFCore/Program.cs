@@ -11,7 +11,8 @@ namespace DominandoEFCore
         static void Main(string[] args)
         {
             // EnsureCreatedAndDeleted();
-            GapDoEnsureCreated();
+            // GapDoEnsureCreated();
+            HealthCheckBancoDeDados();
         }
 
         static void HealthCheckBancoDeDados()
