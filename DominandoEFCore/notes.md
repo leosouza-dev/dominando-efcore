@@ -56,4 +56,4 @@
 - Esse tipo de ataque ainda é muito comum;
 - O ideal é sempre enviar esses valores como parâmetros;
 - Vamos criar o método SqlInjection() para criar um ambiente de teste desse assunto;
-
+- Vamos testar como atualizar um dado de forma segura e na sequência uma forma insegura;

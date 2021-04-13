@@ -17,6 +17,7 @@ namespace DominandoEFCore
             // GerenciarEstadoDaConexao(false);
             // _count=0; // resetando
             // GerenciarEstadoDaConexao(true);
+            SqlInjection();
         }
 
         static void SqlInjection()
@@ -36,6 +37,10 @@ namespace DominandoEFCore
                 }
             );
             db.SaveChanges();
+
+            // atualizando um registro - de forma segura
+            var descricao = "Departamento 1";
+            db.Database.ExecuteSqlRaw("update departamentos set descricao='DepartamentoAlterado' where descricao={0}", descricao);
 
             foreach (var departamento in db.Departamentos.AsNoTracking())
             {
