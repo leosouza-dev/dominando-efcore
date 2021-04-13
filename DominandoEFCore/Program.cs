@@ -19,6 +19,30 @@ namespace DominandoEFCore
             // GerenciarEstadoDaConexao(true);
         }
 
+        static void SqlInjection()
+        {
+            using var db = new DominandoEFCore.Data.ApplicationContext();
+            db.Database.EnsureDeleted();
+            db.Database.EnsureCreated();
+
+            db.Departamentos.AddRange(
+                new Domain.Departamento
+                {
+                    Descricao = "Departamento 1"
+                },
+                new Domain.Departamento
+                {
+                    Descricao = "Departamento 2"
+                }
+            );
+            db.SaveChanges();
+
+            foreach (var departamento in db.Departamentos.AsNoTracking())
+            {
+                System.Console.WriteLine($"Id: {departamento.Id}, Descrição: {departamento.Descricao}");
+            }
+        }
+
         static void ExecuteSQL()
         {
             using var db = new DominandoEFCore.Data.ApplicationContext();

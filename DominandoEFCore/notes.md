@@ -49,3 +49,11 @@
 - Com essa segunda opção podemos trabalhar com DbParameters - evitando possíveis ataques;
 - Também existe o método ExecuteSqlInterpolated(), que é parecido com o ExecuteSqlRaw, só que trabalhando com uma string interpolada;
 
+### Como se proteger de ataques do tipo SQL Injection?
+
+- Na aula passada vimos dois métodos que nos ajudam a se proteger - ExecuteSqlRaw e ExecuteSqlInterpolated;
+- Temos que tomar muito cuidado ao inserir valores que podem ser passados pelo usuário dentro das instruções SQL;
+- Esse tipo de ataque ainda é muito comum;
+- O ideal é sempre enviar esses valores como parâmetros;
+- Vamos criar o método SqlInjection() para criar um ambiente de teste desse assunto;
+
