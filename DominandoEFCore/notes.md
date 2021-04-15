@@ -75,4 +75,13 @@
 - Aplicando migrações em tempo de execução - Não é uma boa pratica;
 - Vamos criar nosso método de teste - **AplicarMigracaoEmTempoDeExecucao()**;
 - Antes de rodar a aplicação vamos apagar o banco pelo próprio terminal - **dotnet ef database drop --context ApplicationContext**;
-- Agora podemos testar - vai executar a migração criando o banco e as tabelas pela migração;
+- Agora podemos testar - vai executar a migração criando o banco e as tabelas, do contexto, pela migração;
+
+### Recuperando todas as migrações existentes em sua aplicação
+
+- Para entender vamos começar criando o método TodasMIgrações();
+- Dentro desse método criamos uma instancia do contexto, e recuperamos as migrações pelo Database.GetMigrations();
+- Rodando aparece apenas uma migração;
+- Durante a explicação foi criado mais uma migração - colocando mais uma prop. no Funcionario() - RG;
+ - Criamos uma nova migração - **dotnet ef migrations add rg --context ApplicationContext**;
+ - Rodando apareceu mais uma migração - rg;

@@ -5,6 +5,7 @@ namespace DominandoEFCore.Domain
         public int Id { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set; }
+        public string RG { get; set; }
 
         // relacionamento (1 departamento tem muitos funcionários
         // e 1 funcionário possui 1 departamento - n:1)

@@ -18,8 +18,26 @@ namespace DominandoEFCore
             // _count=0; // resetando
             // GerenciarEstadoDaConexao(true);
             // SqlInjection();
-            //MigracoesPendentes();
-            AplicarMigracaoEmTempoDeExecucao();
+            // MigracoesPendentes();
+            // AplicarMigracaoEmTempoDeExecucao();
+            TodasMigrações();
+        }
+
+        static void TodasMigrações()
+        {
+            using var db = new DominandoEFCore.Data.ApplicationContext();
+
+            // método que recupera todas as migrações da aplicação em tempo de execução
+            var migracoes = db.Database.GetMigrations();
+
+            // imprime na tela o total de migrações
+            Console.WriteLine($"Total: {migracoes.Count()}");
+
+            // exibe as migrações
+            foreach(var migracao in migracoes)
+            {
+                System.Console.WriteLine($"Migração: {migracao}");
+            }
         }
 
         static void AplicarMigracaoEmTempoDeExecucao()
