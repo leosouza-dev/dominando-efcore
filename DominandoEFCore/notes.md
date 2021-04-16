@@ -106,3 +106,19 @@
 
 ## Tipos de carregamento - DeepDive
 
+### Tipos de carregamentos
+
+- Quando estamos trabalhando com relacionamento, e precisamos carregar os dados relacionados, usamos as propriedades de navegação.
+- Temos basicamente três formas de fazer esse carregamento: Adiantado (traz tudo em 1 única consulta), Explicito (Os dados relacionados serão carregados em momento posterior) e Lento (Dados relacionados carregados sob demanda);
+
+### Consultando dados usando carregamento adiantando (Eager)
+
+- Vamos construir um método para entender melhor - **CarregamentoAdiantado()**;
+- Também criamos um método **SetupTiposCarregamentos()** para popular com alguns registros;
+- no método SetupTiposCarregamentos() nta-se que estamos buscando os **departamentos**, e par incluir os duncionários na busca usamos o método - **.Include(p => p.Funcionarios)**;
+- Ao roda a aplicação, no momento da consulta, por baixo dos panos é feito um "LEFT JOIN" com funcionários.
+- Isso é feito em 1 única ida ao banco - em uma única consulta - **VANTANGEM**;
+- Mas também existe os problemas;
+- Quando realizamos o JOIN acontece o que chamamos de explosão cartesiana ex.: Quando temos um relacionamento 1:n, para cada linha do lado "n", no nosso caso **funcionário**, irá ter uma cópia do seu respectivo **departamento**;
+- Isso tipo de situação pode atrapalhar na performance na aplicação, principalmente quando temos muitos campos no tabela (nesse caso só temos 3 na tabela de departamento, então não é um grande problema) - todos esse campos serão "copiados" várias vezes para cada relacionamento - informações desnecessárias na rede;
+- A **DESVANTAGEM** é o que acabamos de citar;

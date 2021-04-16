@@ -22,7 +22,80 @@ namespace DominandoEFCore
             // AplicarMigracaoEmTempoDeExecucao();
             // TodasMigrações();
             // MigracoesJaAplicadas();
-            ScriptGeralDoBancoDeDados();
+            // ScriptGeralDoBancoDeDados();
+            CarregamentoAdiantado();
+        }
+
+        static void CarregamentoAdiantado()
+        {
+            using var db = new DominandoEFCore.Data.ApplicationContext();
+            SetupTiposCarregamentos(db);
+
+            var departamentos = db
+                .Departamentos
+                .Include(p => p.Funcionarios);
+
+            foreach (var departamento in departamentos)
+            {
+
+                Console.WriteLine("---------------------------------------");
+                Console.WriteLine($"Departamento: {departamento.Descricao}");
+
+                if (departamento.Funcionarios?.Any() ?? false)
+                {
+                    foreach (var funcionario in departamento.Funcionarios)
+                    {
+                        Console.WriteLine($"\tFuncionario: {funcionario.Nome}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"\tNenhum funcionario encontrado!");
+                }
+            }
+        }
+
+        static void SetupTiposCarregamentos(DominandoEFCore.Data.ApplicationContext db)
+        {
+            if (!db.Departamentos.Any())
+            {
+                db.Departamentos.AddRange(
+                    new DominandoEFCore.Domain.Departamento
+                    {
+                        Descricao = "Departamento 01",
+                        Funcionarios = new System.Collections.Generic.List<DominandoEFCore.Domain.Funcionario>
+                        {
+                            new DominandoEFCore.Domain.Funcionario
+                            {
+                                Nome = "João",
+                                CPF = "99999999911",
+                                RG= "2100062"
+                            }
+                        }
+                    },
+                    new DominandoEFCore.Domain.Departamento
+                    {
+                        Descricao = "Departamento 02",
+                        Funcionarios = new System.Collections.Generic.List<DominandoEFCore.Domain.Funcionario>
+                        {
+                            new DominandoEFCore.Domain.Funcionario
+                            {
+                                Nome = "Leonardo",
+                                CPF = "88888888811",
+                                RG= "3100062"
+                            },
+                            new DominandoEFCore.Domain.Funcionario
+                            {
+                                Nome = "Lucas",
+                                CPF = "77777777711",
+                                RG= "1100062"
+                            }
+                        }
+                    });
+
+                db.SaveChanges();
+                db.ChangeTracker.Clear();
+            }
         }
 
         static void ScriptGeralDoBancoDeDados()
