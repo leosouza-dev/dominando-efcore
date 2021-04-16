@@ -101,3 +101,8 @@
 - Agora vamos ver como criae um script do banco de dados;
 - Vamos criar um método para isso - ScriptGeralDoBancoDeDados();
 - Dentro desse método vamos usar o db.Database.GenerateCreateScript() que retorna o script para dentro de uma variável;
+
+---
+
+## Tipos de carregamento - DeepDive
+
