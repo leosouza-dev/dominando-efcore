@@ -122,3 +122,13 @@
 - Quando realizamos o JOIN acontece o que chamamos de explosão cartesiana ex.: Quando temos um relacionamento 1:n, para cada linha do lado "n", no nosso caso **funcionário**, irá ter uma cópia do seu respectivo **departamento**;
 - Isso tipo de situação pode atrapalhar na performance na aplicação, principalmente quando temos muitos campos no tabela (nesse caso só temos 3 na tabela de departamento, então não é um grande problema) - todos esse campos serão "copiados" várias vezes para cada relacionamento - informações desnecessárias na rede;
 - A **DESVANTAGEM** é o que acabamos de citar;
+
+### Consultando dados usando carregamento explícito (Explicitly)
+
+- Significa que os dados relacionados serão explicitamente carregados do BD em um momento posterior - quando solicitar;
+- Por exemplo, vamos carregar os dados de "Departamente" em uma consulta. Só quando necessário vamos carregar os dados de "Funcionário" desse departamento.
+- Vamos trablhar no método - CarregamentoExplicito();
+- Buscamos apenas o departamento, inicialmente;
+- Quando necessário usamos o método **db.Entry(departamento).Collection(p=>p.Funcionarios).Load()** para buscar os funcionários, por exmeplo;
+- Isso realiza uma consulta nova;
+- Também podemos fazer mais uma confição de consulta - **db.Entry(departamento).Collection(p=>p.Funcionarios).Query().Where(p=>p.Id > 2).ToList();**;
