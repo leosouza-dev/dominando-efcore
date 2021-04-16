@@ -94,3 +94,10 @@
 - Vamos criar um método par isso - MigracoesJaAplicadas();
 - E dentro desse método usamos o método db.Database.GetAppliedMigrations();
 - Para teste, aplicamos a migração pendente;
+
+### Gerando o script de criação SQL do modelo de dados
+
+- Vimos alguns métodos de extensão do Database;
+- Agora vamos ver como criae um script do banco de dados;
+- Vamos criar um método para isso - ScriptGeralDoBancoDeDados();
+- Dentro desse método vamos usar o db.Database.GenerateCreateScript() que retorna o script para dentro de uma variável;
