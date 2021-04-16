@@ -20,7 +20,25 @@ namespace DominandoEFCore
             // SqlInjection();
             // MigracoesPendentes();
             // AplicarMigracaoEmTempoDeExecucao();
-            TodasMigrações();
+            // TodasMigrações();
+            MigracoesJaAplicadas();
+        }
+
+        static void MigracoesJaAplicadas()
+        {
+            using var db = new DominandoEFCore.Data.ApplicationContext();
+
+            // recupera as migrações aplicadas no BD
+            var migracoes = db.Database.GetAppliedMigrations();
+
+            // imprime na tela o total de migrações
+            Console.WriteLine($"Total: {migracoes.Count()}");
+
+            // exibe as migrações
+            foreach(var migracao in migracoes)
+            {
+                System.Console.WriteLine($"Migração: {migracao}");
+            }
         }
 
         static void TodasMigrações()

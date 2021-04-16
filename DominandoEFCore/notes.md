@@ -85,3 +85,12 @@
 - Durante a explicação foi criado mais uma migração - colocando mais uma prop. no Funcionario() - RG;
  - Criamos uma nova migração - **dotnet ef migrations add rg --context ApplicationContext**;
  - Rodando apareceu mais uma migração - rg;
+
+### Recuperando migrações aplicadas em seu banco de dados
+
+- Pelo prompt - **dotnet ef migrations list --context ApplicationContext**
+- Esse comando mostra as migrações + migrações pendentes (existe apenas na aplicação);
+- Existe também uma forma de recuperar em tempo de execução;
+- Vamos criar um método par isso - MigracoesJaAplicadas();
+- E dentro desse método usamos o método db.Database.GetAppliedMigrations();
+- Para teste, aplicamos a migração pendente;
